@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head><meta name="GCD" content="YTk3ODQ3ZWZhN2I4NzZmMzBkNTEwYjJld8bb7bf0af4945af4b7c705610d1f873"/>
+<html><head><meta name="GCD" content="YTk3ODQ3ZWZhN2I4NzZmMzBkNTEwYjJl60c916b4eaff24355aa6d4e3dda7ffb2"/>
   <meta charset="utf-8">
   <meta name="generator" content="Google Web Designer 16.4.0.0711">
   <meta name="template" content="Banner 3.0.0">
@@ -269,7 +269,8 @@ set:function(a){this.g.height=a}},width:{configurable:!0,enumerable:!0,get:funct
               // Start rotation only once
               if (!rotationStarted) {
                 rotationStarted = true;
-                startProductRotation();
+                //startProductRotation();
+                startProductSelection()
               }
             }
 
@@ -317,7 +318,7 @@ set:function(a){this.g.height=a}},width:{configurable:!0,enumerable:!0,get:funct
             // ---------------------------------------------------------------
             // ROTATE BETWEEN ALL HIGHEST-STOCK PRODUCTS EVERY 5 SECONDS
             // ---------------------------------------------------------------
-            function startProductRotation() {
+          /*  function startProductRotation() {
 
               if (topProducts.length === 0) return;
 
@@ -338,8 +339,24 @@ set:function(a){this.g.height=a}},width:{configurable:!0,enumerable:!0,get:funct
                 showProductImage(productName);
 
               }, 5000);
-            }
+            }*/
 
+            function startProductSelection() {
+
+              if (topProducts.length === 0) return;
+
+              // Pick one random product from the array
+              let randomIndex = Math.floor(Math.random() * topProducts.length);
+
+              let productName = topProducts[randomIndex]["Product Name"];
+              let productID = topProducts[randomIndex]["Product SKU"];
+
+              console.log("Randomly selected product:", productName);
+              console.log("Randomly selected Product SKU:", productID);
+
+              // Show the image for this product
+              showProductImage(productName);
+            }
 
           
           } else {
@@ -409,7 +426,7 @@ set:function(a){this.g.height=a}},width:{configurable:!0,enumerable:!0,get:funct
         // Start the Ad lifecycle.
         requestAnimationFrame(function() {
           setTimeout(function() {
-           // gwdAd.initAd();
+            //gwdAd.initAd();
           }, 1);
         });
       }
